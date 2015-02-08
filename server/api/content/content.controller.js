@@ -22,6 +22,7 @@ exports.show = function(req, res) {
 
 // Creates a new content in the DB.
 exports.create = function(req, res) {
+  req.body.curator = req.user._id ;
   Content.create(req.body, function(err, content) {
     if(err) { return handleError(res, err); }
     return res.json(201, content);

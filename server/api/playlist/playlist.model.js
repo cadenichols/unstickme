@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var PlaylistSchema = new Schema({
   title: String,
-  author: {type: Schema.ObjectId , ref: 'User'},
+  curator: {type: Schema.ObjectId , ref: 'User'},
   contents: [{type: Schema.ObjectId, ref: 'Content' }],
   description: String
 });

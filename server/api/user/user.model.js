@@ -17,13 +17,10 @@ var UserSchema = new Schema({
   salt: String,
   google: {},
   github: {},
-  completed:[{ note: String,
-              playlist:{type: Schema.ObjectId, ref:'Playlist'},
-              content: {type: Schema.ObjectId, ref:'Content'}
-             }],
-  stuckAt: [{ note: String,
+  contents:[{ note: String,
              playlist:{type: Schema.ObjectId, ref:'Playlist'},
-             content: {type: Schema.ObjectId, ref:'Content'}
+             content: {type: Schema.ObjectId, ref:'Content'},
+             status: {type: String, default: 'learning'}
             }]
 });
 
