@@ -94,6 +94,30 @@ exports.me = function(req, res, next) {
 };
 
 /**
+* mark a content as new stage , stages are : ['learning', 'stuck', 'completed']
+
+/user/update-learning?status=completed&&contentId=3124124&&playlistId=1241241r&&note=something
+*/
+exports.updateLearning= function(req, res){
+  var index = _.findIndex(req.user.contents, {content: req.query.contentId});
+  if(index){
+    req.user.contents[index].status = req.query.status;
+    req.user.contents[index].note = req.query.note ;
+  } else {
+    req.user.contents.push({
+      note: req.query.note,
+      playlist: req.query.playlistId,
+      content: req.query.contentId    
+    })
+  }
+  req.user.save(function(err, doc){
+    if(err) return res.send(500, err);
+    res.json(doc);
+  })
+}
+
+
+/**
  * Authentication callback
  */
 exports.authCallback = function(req, res, next) {
