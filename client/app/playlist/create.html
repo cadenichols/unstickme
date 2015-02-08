@@ -1,0 +1,36 @@
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+  <form name="form" class="form-horizontal" ng-submit="addPlaylist(form)">
+    <fieldset>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Title</label>
+        <div class="col-lg-10">
+          <input type="text" ng-model="newPlaylist.title" class="form-control" placeholder="Title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">Describe your curated content</label>
+        <div class="col-lg-10">
+          <textarea ng-model="newPlaylist.description" class="form-control" rows="2" id="textArea"></textarea>
+          <span class="help-block"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Contents</label>
+        <div ng-repeat="content in newPlaylist.contents" class="input-group">
+          <input ng-hide="temp[content]" ng-model="content.link" type="text" class="form-control" required>
+          <p ng-show="temp[content]" type="text" class="form-control">{{temp[content]}}</p>
+
+          <span class="input-group-btn">
+            <button ng-click="addContent(newPlaylist.contents, form)" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

@@ -99,7 +99,7 @@ exports.me = function(req, res, next) {
 /user/update-learning?status=completed&&contentId=3124124&&playlistId=1241241r&&note=something
 */
 exports.updateLearning= function(req, res){
-  var index = _.findIndex(req.user.contents, {content: req.query.contentId});
+  var index = _.indexOf(req.user.contents, {content: req.query.contentId});
   if(index){
     req.user.contents[index].status = req.query.status;
     req.user.contents[index].note = req.query.note ;

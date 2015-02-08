@@ -7,5 +7,10 @@ angular.module('unstuckMeApp')
         url: '/playlist',
         templateUrl: 'app/playlist/playlist.html',
         controller: 'PlaylistCtrl'
+      })
+    .state('playlist.create', {
+        url: '/create',
+        templateUrl: 'app/playlist/create.html',
+        controller: 'CreatePlaylistCtrl'
       });
   });
