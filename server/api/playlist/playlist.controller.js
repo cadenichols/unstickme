@@ -22,6 +22,7 @@ exports.show = function(req, res) {
 
 // Creates a new playlist in the DB.
 exports.create = function(req, res) {
+  req.body.curator = req.user._id;
   Playlist.create(req.body, function(err, playlist) {
     if(err) { return handleError(res, err); }
     return res.json(201, playlist);
